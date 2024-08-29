@@ -14,7 +14,6 @@ WIDTH, HEIGHT = 1800, 900
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Berry Picker")
 BG = pygame.image.load("Trees_field.jpg").convert()
-grass_walk = pygame.mixer.Sound('Footsteps_grass_wind.wav')#this doesn't sound right
 emily_sheet = pygame.image.load('Emily.png').convert_alpha()
 flying_sheet = pygame.image.load('Emily_fairy.png').convert_alpha()
 
