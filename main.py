@@ -27,6 +27,7 @@ d_images = []
 flying_images = []
 clock = pygame.time.Clock()
 
+
 def get_image(sheet, line, frame, width, height, scale, color):
     image = pygame.Surface((width, height)).convert_alpha()
     image.blit(sheet, (0, 0), ((frame * width), line * height, width, height))
@@ -44,6 +45,7 @@ for x in range(4): #settinp up facing sprite sheets
 
 for x in range(4):
     flying_images.append(get_image(flying_sheet, 0, x, 28, 35, 3, BLACK))
+
 
 class Character:
     def __init__(self, image, x, y):
@@ -82,15 +84,17 @@ def main():
     pygame.key.set_repeat(1, 100)
 
     while run:
-
+        """Checking for in-game events"""
         for event in pygame.event.get():
 
             if event.type == pygame.QUIT:
+                """allow player to exit game"""
                 run = False
                 break
-
+            """Checking for player keyboard input"""
             if event.type == pygame.KEYDOWN:
 
+                """Left direction from arrow or 'a' key"""
                 if event.key == pygame.K_LEFT or event.key == pygame.K_a:
                     PLAYER_X -= 6
                     facing = 3
@@ -99,7 +103,7 @@ def main():
                         counter = 0
                     else:
                         counter += 1
-
+                """Right direction from arrow or 'd' key"""
                 if event.key == pygame.K_RIGHT or event.key == pygame.K_d:
                     PLAYER_X += 6
                     facing = 1
@@ -108,7 +112,7 @@ def main():
                         counter = 0
                     else:
                         counter += 1
-
+                """Up direction from arrow or 'w' key"""
                 if event.key == pygame.K_UP or event.key == pygame.K_w:
                     if HEIGHT - PLAYER_Y < 900:
                         PLAYER_Y -= 6
@@ -118,7 +122,7 @@ def main():
                         counter = 0
                     else:
                         counter += 1
-
+                """Down direction from arrow or 's' key"""
                 if event.key == pygame.K_DOWN or event.key == pygame.K_s:
                     if HEIGHT - PLAYER_Y > 100:
                         PLAYER_Y += 6
@@ -128,8 +132,8 @@ def main():
                         counter = 0
                     else:
                         counter += 1
-
-                if event.key == pygame.K_SPACE: #not working properly yet
+                """Flying direction from space bar and up arrow"""
+                if event.key == pygame.K_SPACE and pygame.K_UP:  # not working properly yet
                     if HEIGHT - PLAYER_Y < 900:
                         PLAYER_Y -= 6
                     image = flying_images[counter]
@@ -137,11 +141,12 @@ def main():
                         counter = 0
                     else:
                         counter += 1
-
+                """Draw player to screen using created variables"""
                 player = Character(image, PLAYER_X, PLAYER_Y)
                 draw(player)
                 pygame.display.update()
             else:
+                """Draw player using default variables when no keys are pushed"""
                 image = get_image(emily_sheet, facing, 0, 16, 32, 3, BLACK)
                 player = Character(image, PLAYER_X, PLAYER_Y)
                 draw(player)
