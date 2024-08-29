@@ -63,15 +63,22 @@ def draw(player):
 
 
 def main():
-
+    # player Y = up/down
     PLAYER_Y = 500
+
+    # player X = right left
     PLAYER_X = 600
+
+    # set run game to True
     run = True
-    iteration = 0
+
+    # track sprite image iteration
     counter = 0
+    # initialize character image variable
     image = None
-    facing = 0
-    event_list = [K_LEFT, K_RIGHT, K_UP, K_DOWN, K_a, K_d, K_w, K_s]
+    # initialize character facing
+    facing = 0   # 0=forward 1=right 2=back 3=left
+
     pygame.key.set_repeat(1, 100)
 
     while run:
@@ -122,7 +129,7 @@ def main():
                     else:
                         counter += 1
 
-                if event.key == pygame.K_SPACE:
+                if event.key == pygame.K_SPACE: #not working properly yet
                     if HEIGHT - PLAYER_Y < 900:
                         PLAYER_Y -= 6
                     image = flying_images[counter]
