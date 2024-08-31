@@ -30,16 +30,6 @@ def get_image(sheet, line, frame, width, height, scale, color):
     return image
 
 
-"""for x in range(4): #settinp up facing sprite sheets
-    l_images.append(get_image(emily_sheet, 3, x, 16, 32, 3, BLACK))
-    r_images.append(get_image(emily_sheet, 1, x, 16, 32, 3, BLACK))
-    u_images.append(get_image(emily_sheet, 2, x, 16, 32, 3, BLACK))
-    d_images.append(get_image(emily_sheet, 0, x, 16, 32, 3, BLACK))
-
-
-for x in range(4):
-    flying_images.append(get_image(flying_sheet, 0, x, 28, 35, 3, BLACK))"""
-
 
 class Character:
     def __init__(self, image, x, y):
@@ -157,8 +147,8 @@ def main():
                     else:
                         counter += 1
                 """Draw player to screen using created variables"""
-                print(Y_speed, "y speed")
-                print(X_speed, "x speed")
+                print(PLAYER_Y, "y coord")
+                print(PLAYER_X, "x coord")
                 image = get_image(character_sheet, facing, counter, 16, 32, PLAYER_Z, BLACK)
                 player = Character(image, PLAYER_X, PLAYER_Y)
                 draw(player)
